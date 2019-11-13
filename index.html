@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+	<body>
+		<div id="product-view">
+		    <div class="preview-image">
+		        <div id="preview-enlarged">
+		        	<img src="gallery/preview1.jpg" class="preview-img show"/>
+		        	<video width="400" height="400" autoplay muted controls class="preview-video hide">
+					  <source src="gallery/video.mp4" type="video/mp4">
+					</video>
+		        </div>
+		        <div id="thumbnail-container">
+		            <img class="thumbnail focused" src="gallery/preview1.jpg" />
+		            <img class="thumbnail" src="gallery/preview2.jpg" />
+		            <img class="thumbnail" src="gallery/preview3.jpg" />
+		            <img class="thumbnail" src="gallery/preview4.jpg" />
+		            <img class="thumbnail" src="gallery/preview5.jpg" />
+		            <img class="thumbnail" src="gallery/preview6.jpg" />
+		            <img class="thumbnail play" src="gallery/play.jpg" />
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+	$("#thumbnail-container img").click(function() {
+		$("#thumbnail-container img").css("border", "1px solid #ccc");
+		if(jQuery(this).hasClass('play')){
+			$('.preview-video').addClass('show');
+			$('.preview-video').removeClass('hide');
+			$('.preview-img').removeClass('show');
+			$('.preview-img').addClass('hide');
+		}else{
+			$('.preview-video').addClass('hide');
+			$('.preview-video').removeClass('show');
+			$('.preview-img').removeClass('hide');
+			$('.preview-img').addClass('show');
+
+		    var src = $(this).attr("src");
+		    $("#preview-enlarged img").attr("src", src);
+		}
+		$(this).css("border", "#fbb20f 2px solid");
+	});
+</script>
+<style type="text/css">
+	.show{
+		display: block;
+	}
+	.hide{
+		display: none;
+	}
+</style>
